@@ -1,24 +1,24 @@
 ﻿@*这里是快捷栏模块*@
-<div id="sousuok" class="ssk_div">
-    <input type="text" id="inputSearchText" class="ssk" onblur="SearchPosts(this.id);" />
-</div>
-<div id="kjl_div" class="kjl_div">
-    <div id="sousuo" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)">
-        <img src="~/Images/Topic-Home-sousuo.png" class="width_full" />
+    <div id="sousuok" class="ssk_div">
+        <input type="text" id="inputSearchText" class="ssk" onblur="SearchPosts(this.id);" />
     </div>
-    <div id="tiwen" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)" onclick="xianshi_ask_div()">
-        <img src="/Images/Topic-Home-woyaotiwen.png" id="tiwen1" class="width_full" />
+    <div id="kjl_div" class="kjl_div">
+        <div id="sousuo" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)">
+            <img src="~/Images/Topic-Home-sousuo.png" class="width_full" />
+        </div>
+        <div id="tiwen" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)" onclick="xianshi_ask_div()">
+            <img src="/Images/Topic-Home-woyaotiwen.png" id="tiwen1" class="width_full" />
+        </div>
+        <div id="zixun" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)" onclick="    window.location.href = '../Topic/Consult'">
+            <img src="/Images/Topic-Home-zixun.png" id="zixun1" class="width_full" />
+        </div>
+        <div id="xinxi" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)">
+            <img src="/Images/Topic-Home-xinxi.png" id="xinxi1" class="width_full" />
+        </div>
+        <div id="backtop" class="kuaijie_btn" onclick="scroll(0, 0)" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)">
+            <img src="/Images/Topic-Home-backtop.png" id="backtop1" class="width_full" />
+        </div>
     </div>
-    <div id="zixun" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)" onclick="    window.location.href = '../Topic/Consult'">
-        <img src="/Images/Topic-Home-zixun.png" id="zixun1" class="width_full" />
-    </div>
-    <div id="xinxi" class="kuaijie_btn" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)">
-        <img src="/Images/Topic-Home-xinxi.png" id="xinxi1" class="width_full" />
-    </div>
-    <div id="backtop" class="kuaijie_btn" onclick="scroll(0, 0)" onmouseover="kuaijie_over(this.id)" onmouseout="kuaijie_out(this.id)">
-        <img src="/Images/Topic-Home-backtop.png" id="backtop1" class="width_full" />
-    </div>
-</div>
 <script>
 
     //本函数实现鼠标移上快捷栏时，快捷栏的图标变成字

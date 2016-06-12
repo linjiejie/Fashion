@@ -1,9 +1,10 @@
 ﻿@{
     ViewBag.Title = "ConsultDetails";
-    Layout = "~/Views/Shared/Top_menu.cshtml";
+    Layout = "~/Views/Shared/Header.cshtml";
     Fashion.Models.SpecialConsult_model specialConsult_model=ViewData["specialConsult_model"] as Fashion.Models.SpecialConsult_model;
     @model Fashion.Models.SpecialConsultAnswer_model
 }
+
 
 <link href="~/kindeditor/themes/default/default.css" rel="stylesheet" />
 <script src="~/kindeditor/kindeditor-all-min.js"></script>
@@ -611,7 +612,7 @@
                 </div><!--<div id="theAnswerDiv">end-->
                 <div id="commentDiv">
 
-                    <div id="comments_kuang_0" class="plk">
+                    <div id="comments_kuang_0" class="plk" >
                         <div id="TheCommentPingLun">
                             <div id="tjpl_simplei"></div>  <!--创建评论产生的地方-->
 
@@ -631,7 +632,7 @@
                         <input type="button" value="特定解答" 
                                style="font-size:28px;box-shadow:5px 4px 2px gray;"
                                title="点击进行特定解答"
-                                onclick="window.location.href = './ExpertAnswer?specialConsultId=@specialConsult_model.id&expertUserName=@specialConsult_model.expert.userName'"/>
+                                onclick="window.location.href = './ExpertAnswer?specialConsultId=@specialConsult_model.id&expertUserName=@ViewData["userName"]'"/>
                     </div>
                 </div><!--<div id="commentDiv">end-->
                 

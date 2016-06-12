@@ -9,7 +9,25 @@ namespace Fashion.Code.BLL
 {
     public class Post_bll
     {
-       
+
+        /// <summary>
+        /// 获取4张普通咨询的帖子
+        /// </summary>
+        /// <returns></returns>
+        public List<Post_model> GetFourPuTongPost()
+        {
+            Post_dal post_dal = new Post_dal();
+            List<Post_model> post_model = post_dal.GetFourPuTongPost();
+            return post_model;
+        }
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// 执行收藏，取消收藏或不执行操作的逻辑判断
@@ -71,6 +89,22 @@ namespace Fashion.Code.BLL
         {
             Post_dal post_dal = new Post_dal();
             object postId = post_dal.GetPostId(caption);
+            if (postId == null || postId == System.DBNull.Value)
+            {
+                return 0;
+            }
+            return (int)postId;
+        }
+        /// <summary>
+        /// 通过静态post页面url查询数据库获得postId
+        /// 结果返回1代表数据库出错
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <returns></returns>
+        public int GetPostIdBy_PostHtmlUrl(string postHtmlUrl)
+        {
+            Post_dal post_dal = new Post_dal();
+            object postId = post_dal.GetPostIdBy_PostHtmlUrl(postHtmlUrl);
             if (postId == null || postId == System.DBNull.Value)
             {
                 return 0;

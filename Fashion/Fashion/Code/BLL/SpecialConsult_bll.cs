@@ -21,13 +21,13 @@ namespace Fashion.Code.BLL
         /// <param name="dislikeStyleImageFileName">不喜欢风格的照片名</param>
         /// <returns></returns>
 
-        public int InsertConsultData(int userId, int expertId, string occasion, string details, string geRenZhaoFileName, string likeStyleImageFileName, string dislikeStyleImageFileName, DateTime datetime)
+        public int InsertConsultData(int userId, string occasion, string details, string geRenZhaoFileName, string likeStyleImageFileName, string dislikeStyleImageFileName, DateTime datetime)
         {
             SpecialConsult_dal specialConsul_dal = new SpecialConsult_dal();
             string geRenZhaoUrl="/Images/ConsultImages/GeRenZhao/"+ geRenZhaoFileName;
             string likeStyleImageUrl="/Images/ConsultImages/LikeStyleImage/"+ likeStyleImageFileName;
             string dislikeStyleImageUrl = "/Images/ConsultImages/DisLikeStyleImage/" + dislikeStyleImageFileName;
-            return specialConsul_dal.InsertConsultData(userId, expertId, occasion, details, geRenZhaoUrl, likeStyleImageUrl, dislikeStyleImageUrl,datetime);
+            return specialConsul_dal.InsertConsultData(userId, occasion, details, geRenZhaoUrl, likeStyleImageUrl, dislikeStyleImageUrl,datetime);
         }
 
 
@@ -44,7 +44,16 @@ namespace Fashion.Code.BLL
             SpecialConsult_dal specialConsult_dal = new SpecialConsult_dal();
             return specialConsult_dal.GetOneConsultData(specialConsultId);
         }
-
+        /// <summary>
+        /// 根据specialConsultId获取特定咨询的SpecialConsult_Caption，SpecialConsult_Occasion，SpecialConsult_Detail，SpecialConsult_Date
+        /// </summary>
+        /// <param name="specialConsultId"></param>
+        /// <returns></returns>
+        public SpecialConsult_model GetOneShortConsultData(int specialConsultId)
+        {
+            SpecialConsult_dal specialConsult_dal = new SpecialConsult_dal();
+            return specialConsult_dal.GetOneShortConsultData(specialConsultId);
+        }
         /// <summary>
         /// 通过用户名，查询该用户特定咨询过的帖子，
         /// 这次不用查询出全部的数据，只需查询一部分数据，因为不是用于详情内容，而是用于遍历
@@ -90,11 +99,11 @@ namespace Fashion.Code.BLL
         /// <param name="specialConsultId">用户特定咨询数据表里的id</param>
         /// <param name="htmlUrl">专家回答的静态htmlurl</param>
         /// <returns></returns>
-        public int InsertAnswerData(int specialConsultId, string htmlUrl,DateTime datetime)
+        public int InsertAnswerData(int specialConsultId, int expertId, string htmlUrl, DateTime datetime)
         {
             SpecialConsult_dal specialConsult_dal = new SpecialConsult_dal();
 
-            if (specialConsult_dal.InsertAnswerData(specialConsultId, htmlUrl, datetime) != 1)
+            if (specialConsult_dal.InsertAnswerData(specialConsultId, expertId, htmlUrl, datetime) != 1)
             {
                 return 0;
             }

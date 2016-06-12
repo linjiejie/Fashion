@@ -13,7 +13,6 @@ namespace Fashion.Controllers
 
         public ActionResult Index()
         {
-            
             return View();
         }
         public ActionResult Index2()

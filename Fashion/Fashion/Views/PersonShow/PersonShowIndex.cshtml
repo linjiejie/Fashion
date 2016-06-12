@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "PersonShowIndex";
+    Layout = "~/Views/Shared/Header.cshtml";
+}
+
+<link href="~/Content/PersonShowCss/PersonShowIndex.css" rel="stylesheet" />
+<script src="~/Scripts/PersonShowJs/personShow.js"></script>
+<div class="zw">
+    <div class="shang">
+        <div class="htmleaf-container">
+            <div id="carousel">
+                <div id="container" tcc-rotation="0">
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg"></item>
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/20150920131911_y5wkn.thumb.700_0.jpeg"></item>
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/20151005134854_iG4fS.jpeg"></item>
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/55a36ab1d42f8.jpg"></item>
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/879913.jpg"></item>
+                    <item><img src="~/Images/PersonShowImg/PersonShowIndex/QQ图片20151221194954.jpg"></item>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="xia">
+        <div class="left">
+
+            <div class="zhaopianxiu">
+                <div class="albums-tab" >
+                    <div class="albums-tab-thumb sim-anim-1"  onclick="window.location.href = 'PictureShowIndex'">
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/20150904131430_Mc5Nj.thumb.700_0.jpeg" class="all studio" />
+
+                    </div>
+
+                </div>
+                <div class="zi2">
+
+                    <a href="PictureShowIndex">进入照片秀</a>
+                </div>
+                <div class="di"></div>
+
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="shipinxiu" onclick="window.location.href = 'VideoShowIndex'">
+                <div id="wrapper">
+                    <div class="main_img">
+                        <img src="~/Images/PersonShowImg/PersonShowIndex/55a36ab1d42f8.jpg">
+
+                    </div>
+                </div>
+                <div class="zi">
+                    <a href="VideoShowIndex">进入视频秀</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@RenderPage("~/Views/Shared/Footer.cshtml")@*这里是引入页脚*@

@@ -55,11 +55,9 @@ namespace Fashion.Code.DAL
                                              	   theUser.User_Id userId,theUser.User_Name userName,theUser.User_Height height,theUser.User_Weight weight,
                                              	   theUser.User_YaoWei yaoWei,theUser.User_LegLength tuiChang,theUser.User_ThighGirth daTuiWei,
                                              	   theUser.User_SkinColor skinColor,theUser.User_TunWei tunWei,theUser.User_ArmGirth biWei,
-                                             	   theUser.User_XiongWei xiongWei,theUser.User_CalfGirth xiaoTuiWei,
-                                             	   expert.User_Id expertId,expert.User_Name expertName
-                                            from (tb_SpecialConsult consult 
-                                                           left join tb_User theUser on consult.SpecialConsult_UserId=theUser.User_Id)
-                                               			   left join tb_User expert on consult.SpecialConsult_ExpertId=expert.User_Id
+                                             	   theUser.User_XiongWei xiongWei,theUser.User_CalfGirth xiaoTuiWei
+                                            from  tb_SpecialConsult consult 
+                                                           left join tb_User theUser on consult.SpecialConsult_UserId=theUser.User_Id
                                             where consult.SpecialConsult_Id=@specialConsultId";
             SqlParameter[] parameters = new SqlParameter[] { 
                 new SqlParameter("@specialConsultId",specialConsultId)
@@ -69,7 +67,31 @@ namespace Fashion.Code.DAL
             return specialConsult_model;
         }
 
-
+        /// <summary>
+        /// 根据specialConsultId获取特定咨询的SpecialConsult_Caption，SpecialConsult_Occasion，SpecialConsult_Detail，SpecialConsult_Date
+        /// </summary>
+        /// <param name="specialConsultId"></param>
+        /// <returns></returns>
+        public SpecialConsult_model GetOneShortConsultData(int specialConsultId)
+        {
+            string sqlStr = @"select SpecialConsult_Caption caption,SpecialConsult_Occasion occasion,
+                                                   SpecialConsult_Detail detail,SpecialConsult_Date [date]
+                                              from tb_SpecialConsult
+                                              where SpecialConsult_Id=@specialConsultId";
+            SqlParameter[] parameters = new SqlParameter[] { 
+                new SqlParameter("@specialConsultId",specialConsultId)
+            };
+            DataTable dt = SqlHelper.ExecuteDataTable(sqlStr, parameters);
+            SpecialConsult_model specialConsult_model = new SpecialConsult_model();
+            if (dt.Rows.Count == 1)
+            {
+                specialConsult_model.caption = dt.Rows[0]["caption"].ToString();
+                specialConsult_model.datetime = (DateTime)dt.Rows[0]["date"];
+                specialConsult_model.occasion = dt.Rows[0]["occasion"].ToString();
+                specialConsult_model.detail = dt.Rows[0]["detail"].ToString();
+            }
+            return specialConsult_model;
+        }
 
 
         /// <summary>
@@ -107,11 +129,15 @@ namespace Fashion.Code.DAL
         /// <returns></returns>
         public List<SpecialConsult_model> GetShortConsultExpertData(int expertId)
         {
-            string sqlStr = @"select SpecialConsult_Id as id,SpecialConsult_Caption as caption,
-                                                    SpecialConsult_UserPhotoUrl as geRenZhao,
-                                                    SpecialConsult_Detail as detail,SpecialConsult_Date  as date
-	                                      from tb_SpecialConsult 
-                                          where SpecialConsult_ExpertId=@expertId";
+            string sqlStr = @" select specialConsult.SpecialConsult_Id as id,
+                                                    specialConsult.SpecialConsult_Caption as caption,
+                                                    specialConsult.SpecialConsult_UserPhotoUrl as geRenZhao,
+                                                    specialConsult.SpecialConsult_Detail as detail,
+                                                	specialConsult.SpecialConsult_Date  as [date]
+                                           from tb_SpecialConsultSelectExperts expert
+                                           inner join tb_SpecialConsult specialConsult
+                                       	  on expert.SpecialConsultSelectExpert_SpecialConsultId=specialConsult.SpecialConsult_Id
+                                          where expert.SpecialConsultSelectExpert_ExpertId=@expertId";
             SqlParameter[] parameters = new SqlParameter[] { 
                 new SqlParameter("@expertId",expertId),
             };
@@ -171,9 +197,6 @@ namespace Fashion.Code.DAL
             specialConsult_model.user.biWei = Convert.ToInt32(row["biWei"]);
             specialConsult_model.user.xiongWei = Convert.ToInt32(row["xiongWei"]);
             specialConsult_model.user.skinColor = row["skinColor"].ToString();
-            //专家数据
-            specialConsult_model.expert.userId = (int)row["expertId"];
-            specialConsult_model.expert.userName = row["expertName"].ToString();
             return specialConsult_model;
         }
 
@@ -188,19 +211,18 @@ namespace Fashion.Code.DAL
         /// <param name="likeStyleImageUrl">喜欢风格的照片url</param>
         /// <param name="dislikeStyleImageUrl">不喜欢风格的照片url</param>
         /// <returns></returns>
-        public int InsertConsultData(int userId, int expertId, string occasion, string details, string geRenZhaoUrl, string likeStyleImageUrl, string dislikeStyleImageUrl,DateTime datetime)
+        public int InsertConsultData(int userId, string occasion, string details, string geRenZhaoUrl, string likeStyleImageUrl, string dislikeStyleImageUrl,DateTime datetime)
         {
             string sqlStr = @"insert into tb_SpecialConsult 
                                                              ( SpecialConsult_UserId, SpecialConsult_UserPhotoUrl,
                                                                SpecialConsult_Occasion, SpecialConsult_LikeStyleUrl, 
                                                                SpecialConsult_DislikeStyleUrl, SpecialConsult_Detail, 
-                                                               SpecialConsult_ExpertId,SpecialConsult_Date)
+                                                               SpecialConsult_Date)
                                                    values(@userId,@geRenZhaoUrl,
                                                                @occasion,@likeStyleImageUrl,
-   	                                                           @dislikeStyleImageUrl,@details,@expertId,@datetime)";
+   	                                                           @dislikeStyleImageUrl,@details,@datetime)";
             SqlParameter[] parameters = new SqlParameter[] { 
                 new SqlParameter("@userId",userId),
-                new SqlParameter("@expertId",expertId),
                 new SqlParameter("@occasion",occasion),
                 new SqlParameter("@details",details),
                 new SqlParameter("@geRenZhaoUrl",geRenZhaoUrl),
@@ -218,13 +240,14 @@ namespace Fashion.Code.DAL
        /// <param name="specialConsultId">用户特定咨询数据表里的id</param>
        /// <param name="htmlUrl">专家回答的静态htmlurl</param>
        /// <returns></returns>
-        public int InsertAnswerData(int specialConsultId, string htmlUrl,DateTime datetime)
+        public int InsertAnswerData(int specialConsultId, int expertId,string htmlUrl,DateTime datetime)
         {
             string sqlStr = @"insert tb_SpecialConsultAnswer
-                                                      ( SpecialConsultAnswer_SpecialConsultId, SpecialConsultAnswer_HtmlUrl,SpecialConsultAnswer_Date)  
-                                            values(@specialConsultId,@htmlUrl,@datetime)";
+                                                      ( SpecialConsultAnswer_SpecialConsultId, SpecialConsult_ExpertId,SpecialConsultAnswer_HtmlUrl,SpecialConsultAnswer_Date)  
+                                            values(@specialConsultId,@expertId,@htmlUrl,@datetime)";
             SqlParameter[] parameters = new SqlParameter[] { 
                 new SqlParameter("@specialConsultId",specialConsultId),
+                new SqlParameter("@expertId",expertId),
                 new SqlParameter("@htmlUrl",htmlUrl),
                 new SqlParameter("@datetime",datetime),
             };

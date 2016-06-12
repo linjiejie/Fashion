@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "ExpertAnswer";
-    Layout = "~/Views/Shared/Top_menu.cshtml";
+    Layout = "~/Views/Shared/Header.cshtml";
     @model Fashion.Models.SpecialConsult_model
 }
 <link href="~/kindeditor/themes/default/default.css" rel="stylesheet" />
@@ -200,11 +200,13 @@
                             <tr>
                                 <td>
                                     <select name="selectCloth1">
-                                        <option>帽子</option>
                                         <option>上衣</option>
                                         <option>裙子</option>
                                         <option>裤子</option>
+                                        <option>连衣裙</option>
                                         <option>鞋子</option>
+                                        <option>帽子</option>
+                                        <option>饰品</option>
                                     </select>
                                 </td>
                                 <td><input type="text"  name="clothShoppingUrl1"/></td>

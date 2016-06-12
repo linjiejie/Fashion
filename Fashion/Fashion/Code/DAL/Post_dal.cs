@@ -10,9 +10,6 @@ namespace Fashion.Code.DAL
 {   
 
 
-
-
-
     
     public class Post_dal
     {
@@ -30,6 +27,39 @@ namespace Fashion.Code.DAL
         //    };
         //    return SqlHelper.ExecuteScalar(sqlStr, parameters);
         //}
+
+
+
+
+        /// <summary>
+        /// 从数据库获取四张普通咨询帖子的首图、html链接、内容前两百个字符
+        /// </summary>
+        /// <returns></returns>
+        public List<Post_model> GetFourPuTongPost()
+        {
+            string sqlStr = "select top 4 * from PostView";
+            DataTable dataTable = SqlHelper.ExecuteDataTable(sqlStr);
+            List<Post_model> post_modelList = new List<Post_model>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                post_modelList.Add(ToPictureModel(row));//调用ToPictureModel()函数
+            }
+
+            return post_modelList;
+
+        }
+
+        //将一条数据转化为Post-model数据
+        //帖子的第一张图片，内容的前200个字符
+        public Post_model ToPictureModel(DataRow row)
+        {
+            Post_model post_model = new Post_model();
+            post_model.postContent = row["content"].ToString();//内容
+            post_model.firstPostPhotoUrl = row["PostPhoto_PhotoUrl"].ToString();//图
+            post_model.postId = (int)row["id"];
+            return post_model;
+        }
+
 
 
 
@@ -116,8 +146,23 @@ namespace Fashion.Code.DAL
             SqlParameter[] parameters = new SqlParameter[]{
                 new SqlParameter("@caption",caption)
             };
+            return SqlHelper.ExecuteScalar(sqlStr, parameters);  
+        }
+
+        /// <summary>
+        /// 通过静态post页面url查询数据库获得postId
+        /// 结果返回1代表数据库出错
+        /// </summary>
+        /// <param name="caption"></param>
+        /// <returns></returns>
+        public object GetPostIdBy_PostHtmlUrl(string postHtmlUrl)
+        {
+            string sqlStr = "select Post_Id from tb_Post where Post_HtmlUrl=@postHtmlUrl";
+            SqlParameter[] parameters = new SqlParameter[]{
+                new SqlParameter("@postHtmlUrl",postHtmlUrl)
+            };
             return SqlHelper.ExecuteScalar(sqlStr, parameters);
-            
+
         }
 
       

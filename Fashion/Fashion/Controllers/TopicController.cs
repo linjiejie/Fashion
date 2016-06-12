@@ -15,12 +15,21 @@ namespace Fashion.Controllers
     {
         //
         // GET: /Topic/  
+
+        public ActionResult HomeTWO()
+        {
+            LoginStatusConfig();          //配置登录状态     
+            return View();
+        }
+
+        
+
+
+
+
         public ActionResult PostDetails()
         {
-            if (Session["userName"] == null)
-            {
-                return View("LoginRemind");
-            }
+         
             LoginStatusConfig();          //配置登录状态            
             int postId = Convert.ToInt32(Request["postId"]);
             //获取postId的原帖数据
@@ -93,7 +102,6 @@ namespace Fashion.Controllers
             int userId = user_bll.GetUserId(userName);
             //string expertName=Request[].ToString();
             //int expertId = user_bll.GetUserId(expertName);
-            int expertId = Convert.ToInt32(Request["expertId"]);
             string occasion = Request["occasion"].ToString();//场合
             string details = Request["details"].ToString();//特定咨询详情
             DateTime datetime = DateTime.Now;
@@ -117,9 +125,18 @@ namespace Fashion.Controllers
             bitmap3.Save(Server.MapPath("~/Images/ConsultImages/DislikeStyleImage/" + dislikeStyleImageFileName), System.Drawing.Imaging.ImageFormat.Png);
 
             SpecialConsult_bll specialConsult_bll = new SpecialConsult_bll();//保存特定咨询数据
-            specialConsult_bll.InsertConsultData(userId, expertId, occasion, details, geRenZhaoFileName, likeStyleImageFileName, dislikeStyleImageFileName,datetime);
+            specialConsult_bll.InsertConsultData(userId, occasion, details, geRenZhaoFileName, likeStyleImageFileName, dislikeStyleImageFileName,datetime);
             //通过geRenZhaoFileName查询该咨询的id
             int specialConsult_Id = specialConsult_bll.GetSpecialConsultId(geRenZhaoFileName);
+            //将用户特定咨询时选择的专家，添加到数据库
+            SpecialConsultSelectExperts_bll specialConsultSelectExperts_bll = new SpecialConsultSelectExperts_bll();
+            List<string> expertIdList = new List<string>();
+            string expertIdStr = Request["expertIdList"].ToString();//获取用户选择的专家id
+            foreach (string expertId in expertIdStr.Split(','))
+            {
+                expertIdList.Add(expertId);
+            }
+            specialConsultSelectExperts_bll.InsertSpecialConsultSelectExperts(specialConsult_Id, expertIdList);
             return Content(specialConsult_Id.ToString());//返回specialConsult_Id
         }
         public ActionResult Test()
@@ -183,8 +200,8 @@ namespace Fashion.Controllers
         /// <returns></returns>
         public ActionResult AjaxPostSupportCountAdd1()
         {
-            if (Session["userName"] == null)
-                return Content("2");
+            //if (Session["userName"] == null)
+            //    return Content("2");
 
             string postIdStr=Request["postId"].ToString();
             int postId=Convert.ToInt32(postIdStr);
@@ -348,7 +365,9 @@ namespace Fashion.Controllers
                 return Content("保存帖子信息时数据库出错");
             }//将帖子数据保存到数据库---------成功
             //////获取所有图片里的图片路径,并且将图片路径保存到数据库里
-            int postId = Post.GetPostId(caption); //根据帖子的标题查询数据库，得到该贴子的postId
+
+
+            int postId = Post.GetPostIdBy_PostHtmlUrl(staticHtmlPath); //根据帖子的标题查询数据库，得到该贴子的postId
             System.Text.RegularExpressions.Regex regImg2 = new System.Text.RegularExpressions.Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", System.Text.RegularExpressions.RegexOptions.IgnoreCase);// 定义正则表达式用来匹配 img 标签
             System.Text.RegularExpressions.MatchCollection matches = regImg2.Matches(contentData);            
             int i = 0;

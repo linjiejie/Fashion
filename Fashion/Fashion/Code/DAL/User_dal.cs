@@ -309,9 +309,9 @@ namespace Fashion.Code.DAL
                 if (rankName == "专家")//rankName为专家时，查询特定解答数
                 {
                     sqlStr = sqlStr + @"  left join
-		                                     (select SpecialConsult_ExpertId userId, count(*) specialConsultCount 
-                                              from tb_SpecialConsult
-                                              group by SpecialConsult_ExpertId)  as SpecialConsult on tb_User.User_Id=SpecialConsult.userId					  
+		                                     (select SpecialConsultSelectExpert_ExpertId userId, count(*) specialConsultCount 
+                                              from tb_SpecialConsultSelectExperts
+                                              group by SpecialConsultSelectExpert_ExpertId)  as SpecialConsult on tb_User.User_Id=SpecialConsult.userId					  
                                                where tb_User.User_Id=@userId";
                 }
             SqlParameter[] parameters = new SqlParameter[]{

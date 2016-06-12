@@ -16,10 +16,8 @@ namespace Fashion.Models
         public string detail;
         public DateTime datetime;
         public User_model user;//咨询者，即普通用户
-        public User_model expert;//专家
         public SpecialConsult_model(){
             user = new User_model();
-            expert = new User_model();
     }
     }
 }

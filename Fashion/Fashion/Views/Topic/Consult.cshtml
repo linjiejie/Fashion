@@ -27,7 +27,7 @@
         var second = document.getElementById('totalSecond').textContent;
         if (second <=0) {
             var specialConsultId = $("#hidspecialConsultId").val();
-            window.location.href = "../Consult/ConsultDetails?specialConsultId=" + specialConsultId.toString();
+            window.location.href = "../Consult/ConsultDetails?specialConsultId=" + specialConsultId.toString() + "&expertUserName=-1";
         } else {
             if (navigator.appName.indexOf("Explorer") > -1) {
                 document.getElementById('totalSecond').innerText = (parseInt(second) - 1).toString();
@@ -42,7 +42,7 @@
     function GoToConsultDetails()
     {
         var specialConsultId = $("#hidspecialConsultId").val();
-        window.location.href = "../Consult/ConsultDetails?specialConsultId="+specialConsultId.toString();
+        window.location.href = "../Consult/ConsultDetails?specialConsultId=" + specialConsultId.toString() + "&expertUserName=-1";
     }
 </script>
 
@@ -50,7 +50,7 @@
     //咨询填写成功后，调用ajax保存数据
     function ajaxSaveData()
     {
-        var theExpertId = $("#hidSelectExpertId").val();        
+        var expertIdList = $("#hidSelectExpertId").val();        
         var imgGeRenZhao = document.getElementById("imghead");//获取个人照片
         var imgGeRenZhaoBase64 = getBase64Image(imgGeRenZhao);//将个人照片转化为base64数据
         var theOccasion = $("#Sel_Occasion p").html();//场合
@@ -62,7 +62,7 @@
         $.ajax({
             async: false,
             url: "MakeConsult",
-            data: { geRenZhao: imgGeRenZhaoBase64, occasion: theOccasion, details: theDetails, likeStyleImage: likeStyleImageBase64, dislikeStyleImage: dislikeStyleImageBase64, expertId: theExpertId },
+            data: { geRenZhao: imgGeRenZhaoBase64, occasion: theOccasion, details: theDetails, likeStyleImage: likeStyleImageBase64, dislikeStyleImage: dislikeStyleImageBase64, expertIdList: expertIdList },
             type: "post",
             success: function (result) {
                 $("#hidspecialConsultId").val(result);
@@ -802,26 +802,38 @@
         }
         var xz_daren_shu = 0;        //选择的专家个数；
         function Chose_daren_click(x) {       //点击选择专家
+            var expertId = x.substring(8);
+            var expertIds = "";
             if (xz_daren_shu <= 0) {
-                var expertId = x.substring(8);
                 $("#hidSelectExpertId").val(expertId);
-                var fg_id = "fg_" + x;
-                var yx_id = "yx_" + x;
-                var name_id = "name_" + x;
-                document.getElementById(fg_id).style.display = "block";
-                document.getElementById(yx_id).style.display = "block";
-                document.getElementById(x).onmouseout = "";
-                document.getElementById(x).onclick = function () { Chose_daren_clicked(this.id); };
-                document.getElementById("yixuan_daren").innerHTML = document.getElementById(name_id).innerHTML;
-                xz_daren_shu++;
             }
             else {
-                alert("只能选择一个专家！");
+                expertIds = $("#hidSelectExpertId").val() + ","+expertId;
+                $("#hidSelectExpertId").val(expertIds);
             }
-
+            var fg_id = "fg_" + x;
+            var yx_id = "yx_" + x;
+            var name_id = "name_" + x;
+            document.getElementById(fg_id).style.display = "block";
+            document.getElementById(yx_id).style.display = "block";
+            document.getElementById(x).onmouseout = "";
+            document.getElementById(x).onclick = function () { Chose_daren_clicked(this.id); };
+            document.getElementById("yixuan_daren").innerHTML = document.getElementById(name_id).innerHTML;
+            xz_daren_shu++;
 
         }
         function Chose_daren_clicked(x) {             //点击取消选择专家
+            var expertId = x.substring(8);
+            var expertIds = $("#hidSelectExpertId").val();
+            if (xz_daren_shu <= 1) {
+                $("#hidSelectExpertId").val("");
+            }
+            else {
+                //两次替换是为了去掉已选的专家，两次替换才能确保匹配到一次
+                expertIds = expertIds.replace(expertId + ",", "");
+                expertIds=expertIds.replace("," + expertId, "");
+                $("#hidSelectExpertId").val(expertIds);
+            }
             var fg_id = "fg_" + x;
             var yx_id = "yx_" + x;
             document.getElementById(fg_id).style.display = "none";

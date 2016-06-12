@@ -15,12 +15,12 @@ namespace Fashion.Code.BLL
         /// </summary>
         /// <param name="specialConsultId">特定咨询的帖子编号</param>
         /// <returns></returns>
-        public SpecialConsultAnswer_model GetOneSpecialAnswerData(int specialConsultId)
+        public SpecialConsultAnswer_model GetOneSpecialAnswerData(int specialConsultId, int expertId)
         {
             SpecialConsultAnswer_dal specialConsultAnswer_dal = new SpecialConsultAnswer_dal();
             SpecialConsultAnswer_model specialConsultAnswer_model = new SpecialConsultAnswer_model();
-            try { 
-                specialConsultAnswer_model=specialConsultAnswer_dal.GetOneSpecialAnswerData(specialConsultId);
+            try {
+                specialConsultAnswer_model = specialConsultAnswer_dal.GetOneSpecialAnswerData(specialConsultId, expertId);
             }
             catch (Exception e)
             {
@@ -32,6 +32,13 @@ namespace Fashion.Code.BLL
             }
                 
             return specialConsultAnswer_model;
+        }
+
+
+        public List<SpecialConsultAnswer_model> GetAllSelectExpertShortAnswer(int specialConsultId)
+        {
+            SpecialConsultAnswer_dal specialConsultAnswer_dal = new SpecialConsultAnswer_dal();
+            return specialConsultAnswer_dal.GetAllSelectExpertShortAnswer(specialConsultId);
         }
 
     }

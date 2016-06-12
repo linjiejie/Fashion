@@ -34,6 +34,7 @@
     </script>
 
     <script>
+
         $(document).ready(function () {
 
             //配置登录信息的变量,登录状态 登录名 头像url等
@@ -43,7 +44,7 @@
                if(isLogin=="1")
             {
                 touXiangUrl = "@ViewData["TouXiangUrl"]";//这里是从后端传回来的值，是字符串，所以要加引号,不能加tostring
-                userName="@ViewData["userName"]";
+                   userName = "@ViewData["userName"]";
                }
             /////配置变量完毕
             //////若登陆成功，设置本页面的用户信息
@@ -57,7 +58,7 @@
             /////设置用户信息完毕
             IsLoginDisplay(isLogin, "login_xs", "un_login_xs");//根据用户是否登录显示导航栏的用户信息
         });
-        
+       
         ////实现根据用户是否登录成功来设置导航栏的用户登录或未登录状态
         //function makeLoginDisplay(isLogin) {
         //    if (isLogin == "1") {

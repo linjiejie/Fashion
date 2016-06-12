@@ -1,14 +1,4 @@
-﻿@model Fashion.Models.PostFull_model
-@using Fashion.Models
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Header.cshtml";
 }
-
-<h2>Index</h2>
-@Model.postSender
-
-@{
-    PostFull_model pp = new PostFull_model();
-    pp = ViewData["aa"] as PostFull_model;
-}
-@pp.postSender;

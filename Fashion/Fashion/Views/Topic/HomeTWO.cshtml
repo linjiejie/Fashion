@@ -1,0 +1,286 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/Header.cshtml";
+}
+
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap.js"></script>
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+   <!-- <style>
+        div {
+            border: 3px solid #000;
+        }      
+    </style>-->
+</head>
+
+
+<script>
+
+
+
+
+    //取出普通咨询的四张简化帖子
+    function putong() {
+        $.ajax({
+            url: "../Posts/AjaxHomeGetPuTongPicture",
+            type: "post",
+            success: function (data) {
+
+                //数据处理
+                // alert(data);
+                var jsonData = JSON.parse(data);
+                // alert(jsonData[0].firstPostPhotoUrl + jsonData[0].postContent + jsonData[0].postHtmlUrl);
+
+
+                var htmllist = "";
+                // alert(jsonData);
+                for (i = 0; i < jsonData.length; i++) {
+                    var ThePictureHtml = $("#ThePicture").html();
+                    ThePictureHtml = ThePictureHtml.replace("swindyPutongzixunPicture", jsonData[i].firstPostPhotoUrl);
+                    ThePictureHtml = ThePictureHtml.replace("swindyTedingzixunContent", jsonData[i].postContent);
+                    ThePictureHtml = ThePictureHtml.replace("swindyPutongzixunHtmlUrl", "PostDetails?postId=" + jsonData[i].postId);
+                   //alert(jsonData[i].postHtmlUrl);
+                    htmllist += ThePictureHtml;
+                    //alert("看看你是什么样子：" + htmllist);
+                }
+
+                $("#list").html(htmllist);
+            }
+
+        });
+
+    }
+
+
+    $(document).ready(function () {
+        putong();
+    });
+
+</script>
+
+
+<!--总框-->
+<div class="container">
+    <div class="row ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <img src="~/Images/普通咨询.jpg" class="img-responsive">
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="list">
+
+            </div>
+           </div>
+
+
+    <!--特定咨询-->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="#" target="_blank">
+                <!--链接 指向街拍页面-->
+                <img src="~/Images/特定咨询.jpg" class="img-responsive"><!--标题栏-->
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <!--第一排-->
+            <a href="#" target="_blank">
+                <img src="~/Images/特定咨询1.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>春天+矮个子福音+增高又显身材示范搭！在这个春暖花开的季节，应该脱下厚重的外套，尽情的释放自己，做那个最自信迷人的自己。是</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="#" target="_blank">
+                <img src="~/Images/特定咨询2.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>大多的女性骨子里都有着爱美的因子，也流淌着浪漫的情怀，在条件允许的情况下，她们也大都对生活品质有着自己的追求，更加重视生</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="#" target="_blank">
+                <img src="~/Images/特定咨询3.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>烈日炎炎的夏日，大家都被被太阳烤的外焦里嫩无比烦躁，不过比起这些汉子们更享受穿着清凉的妹子给他们带来的血脉喷张，尤其是一</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="#" target="_blank">
+                <img src="~/Images/特定咨询4.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>在各类服装搭配中，白衬衫绝对是永不过时的万能经典，它让女生能清新，能妩媚，能帅气，能干练，在每一个女生的衣柜里，都一定有</p>
+        </div>
+
+
+
+    </div>
+
+
+    <!--照片秀-->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="#" target="_blank">
+                <!--链接 指向街拍页面-->
+                <img src="~/Images/照片秀.jpg" class="img-responsive"><!--标题栏-->
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <!--第一排-->
+            <a href="../PersonShow/PicturePlay" target="_blank">
+                <img src="/Images/照片秀1.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/PicturePlay" target="_blank">
+                <img src="/Images/照片秀2.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/PicturePlay" target="_blank">
+                <img src="/Images/照片秀3.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/PicturePlay" target="_blank">
+                <img src="/Images/照片秀4.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+
+
+
+    </div>
+
+
+    <!--视频秀-->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <a href="../PersonShow/VideoShowIndex" target="_blank">
+                <!--链接 指向街拍页面-->
+                <img src="~/Images/视频秀.jpg" class="img-responsive"><!--标题栏-->
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <!--第一排-->
+            <a href="../PersonShow/VideoShowIndex" target="_blank">
+                <img src="http://www.7dapei.com/images/201603b/64.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/VideoShowIndex" target="_blank">
+                <img src="http://www.7dapei.com/images/201603b/64.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/VideoShowIndex" target="_blank">
+                <img src="http://www.7dapei.com/images/201603b/64.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../PersonShow/VideoShowIndex" target="_blank">
+                <img src="http://www.7dapei.com/images/201603b/64.jpg" class="img-responsive img-rounded">
+            </a>
+            <p>菇凉们，春天就要来了，是不是觉得衣橱里面又少了衣服啊。那么给自己选上几件休闲时尚百搭的衣服还是有必要的</p>
+        </div>
+
+
+
+    </div>
+
+
+    <!--时尚街拍-->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">           
+            <a href="#" target="_blank">
+                <!--链接 指向街拍页面-->
+                <img src="~/Images/时尚街拍.jpg" class="img-responsive"><!--标题栏-->
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <!--第一排-->
+            <a href="../StreetSnap/streetHome" target="_blank">
+                <img src="~/Images/街拍1.jpg" class="img-responsive img-rounded">
+            </a>
+           
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../StreetSnap/streetHome" target="_blank">
+                <img src="~/Images/街拍2.jpg" class="img-responsive img-rounded">
+            </a>
+          
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../StreetSnap/streetHome" target="_blank">
+                <img src="~/Images/街拍3.jpg" class="img-responsive img-rounded">
+            </a>
+          
+        </div>
+        <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+            <a href="../StreetSnap/streetHome" target="_blank">
+                <img src="~/Images/街拍4.jpg" class="img-responsive img-rounded">
+            </a>
+           
+        </div>
+
+
+
+    </div>
+
+
+   
+
+
+<!--普通咨询模板-->
+<div id="ThePicture" style="display:none ;">
+    <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+        <a href="swindyPutongzixunHtmlUrl" target="_blank">
+            <!--普通咨询html静态页-->
+            <img src="swindyPutongzixunPicture" class="img-responsive img-rounded"><!--图片-->
+        </a>
+        <p>
+            swindyTedingzixunContent<!--帖子内容-->
+        </p>
+    </div>
+</div>
+
+
+<!--照片秀模板-->
+<div id="PhotoShow" style="display:none ;">
+    <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+        <a href="swindyPhotoUrl" target="_blank">
+            <!--具体页面-->
+            <img src="swindyPhotoShowPicture" class="img-responsive img-rounded"><!--图片-->
+        </a>
+        <p>
+            swindyPhotoShowContent<!--帖子内容-->
+        </p>
+    </div>
+</div>
+
+<!--视频秀模板-->
+<div id="VideoShow" style="display:none ;">
+    <div class="col-lg-3 col-md-3  col-sm-3 col-xs-3">
+        <a href="swindyVideoUrl" target="_blank">
+            <!--具体页面-->
+            <img src="swindyVideoShowPicture" class="img-responsive img-rounded"><!--图片-->
+        </a>
+        <p>
+            swindyVideoShowContent<!--帖子内容-->
+        </p>
+    </div>
+</div>
+
+    @RenderPage("~/Views/Shared/Footer.cshtml")@*这里是引入页脚*@
+
+

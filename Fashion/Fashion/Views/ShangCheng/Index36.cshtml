@@ -1,0 +1,179 @@
+﻿@{
+    ViewBag.Title = "Index36";
+    Layout = "~/Views/Shared/Header.cshtml";
+}
+
+<link href="~/Content/ShangChengCss/new_file.css" rel="stylesheet" />
+<script src="~/Scripts/ShangChengJs/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.choosebox li a').click(function () {
+            var thisToggle = $(this).is('.size_radioToggle') ? $(this) : $(this).prev();
+            var checkBox = thisToggle.prev();
+            checkBox.trigger('click');
+            $('.size_radioToggle').removeClass('current');
+            thisToggle.addClass('current');
+            return false;
+        });
+    });
+
+    $(".choosebox li a").click(function () {
+        var text = $(this).html();
+        $(".choosetext span").html(text);
+        $("#result").html("" + getSelectedValue("dress-size"));
+    });
+
+    function getSelectedValue(id) {
+        return
+        $("#" + id).find(".choosetext span.value").html();
+    }
+</script>
+<style type="text/css">
+    .clear {
+        display: block;
+        clear: both;
+    }
+
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+        a:hover {
+            color: #990000;
+            text-decoration: underline;
+        }
+    /* choose */
+    .choose {
+        width: 260px;
+        margin: 0px;
+        border: solid 1px #ddd;
+        padding: 15px 30px 30px 30px;
+    }
+
+    .choosetext {
+        height: 24px;
+        padding: 20px 0;
+        font-size: 14px;
+    }
+
+    .choosebox {
+        padding: 0 0 35px 0;
+    }
+
+        .choosebox li {
+            float: left;
+            margin-right: 10px;
+            display: inline;
+        }
+
+            .choosebox li a {
+                float: left;
+                background: #fff;
+                font-size: 14px;
+                border: 1px solid #ccc;
+                height: 14px;
+                line-height: 14px;
+                padding: 4px 12px;
+                display: block;
+            }
+
+                .choosebox li a.current {
+                    background: url(../Images/ShangCheng//right-icon.gif) no-repeat 100% 100%;
+                    border: 1px solid #A10000;
+                }
+
+            .choosebox li input {
+                display: none;
+            }
+
+    .choose p {
+        color: darksalmon;
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    .choose .btn-img {
+        width: 160px;
+        height: 50px;
+        overflow: hidden;
+        background-color: #A10000;
+        cursor: pointer;
+        border: 0;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        padding-left: 30px;
+    }
+
+        .choose .btn-img span {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            font-family: "微软雅黑","宋体";
+            padding: 0 0 0 50px;
+            line-height: 20px;
+        }
+</style>
+<div class="zuo">
+    <img src="~/Images/ShangCheng/36.jpg" />
+</div>
+<div class="you">
+    <div class="miaosu">
+        韩都衣舍2016韩版女装夏装新款圆领印花宽松显瘦短袖T恤
+        <br />
+        <br />
+        <p>¥ 88.00</p>
+    </div>
+    <div class="mai">
+        <div class="choose" id="dress-size">
+            <form action="" method="get">
+                <p>本衣服可购买可租赁</p>
+                <div class="choosetext">尺寸：<span>未选择</span></div>
+                <div class="choosebox">
+                    <ul class="clearfix">
+                        <li>
+                            <input type="radio" name="name" value="S" id="" />
+                            <a href="javascript:void(0);" class="size_radioToggle" style="height:28px;margin-top:5px;"><span class="value">S</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" value="M" id="" />
+                            <a href="javascript:void(0);" class="size_radioToggle" style="height: 28px; margin-top: 5px;"> <span class="value">M</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" value="L" id="" />
+                            <a href="javascript:void(0);" class="size_radioToggle" style="height: 28px; margin-top: 5px;"><span class="value">L</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" value="XL" id="" />
+                            <a href="javascript:void(0);" class="size_radioToggle" style="height: 28px; margin-top: 5px;"><span class="value">XL</span></a>
+                        </li>
+                        <li>
+                            <input type="radio" name="name" value="XXL" id="" />
+                            <a href="javascript:void(0);" class="size_radioToggle" style="height: 28px; margin-top: 5px;"><span class="value">XXL</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <button type="submit" class="btn-img"><span>购买</span></button>
+                    <br /><br />
+                    <button type="submit" class="btn-img"><span>租赁</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div style="height:630px;">
+
+</div>

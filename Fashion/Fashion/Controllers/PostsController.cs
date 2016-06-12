@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Fashion.Controllers
 {
@@ -12,6 +13,27 @@ namespace Fashion.Controllers
     {
         //
         // GET: /Posts/
+
+
+        /// <summary>
+        /// 通过Ajax获得4个普通咨询的首张图片和前200个字符
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AjaxHomeGetPuTongPicture()
+        {
+
+            Post_bll post_bll = new Post_bll();
+            JavaScriptSerializer serializer1 = new JavaScriptSerializer();
+
+            string json = serializer1.Serialize(post_bll.GetFourPuTongPost());
+            //return Content("1");
+            return Content(json);//返回一个json数据
+        }
+
+
+
+
+
 
         public ActionResult Index()
         {

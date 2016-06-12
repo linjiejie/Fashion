@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "VideoPlay7";
+    Layout = "~/Views/Shared/Header.cshtml";
+}
+
+<link href="~/Content/PersonShowCss/VideoPlay.css" rel="stylesheet" />
+<script src="~/Scripts/PersonShowJs/VideoPlay.js"></script>
+@*<script src="js/bofang.js" type="text/javascript" charset="utf-8"></script>*@
+<div class="ship" style="margin-top:0px;">
+    <video id="video" style="width:900px;height:500px;" autoplay="autoplay" controls="controls">
+        <source src="~/Videos/1.mp4" type="video/mp4" style="width:100%;height:100%;" />
+    </video>
+</div>
+<div class="anniu">
+    <article class="htmleaf-container">
+        <div id="container">
+
+            <div class="feed" id="feed1">
+                <div class="zan">
+
+                    喜欢就点个赞吧
+
+                </div>
+                <div class="heart " id="like1" rel="like"></div> <div class="likeCount" id="likeCount1">14</div>
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $('body').on("click", '.heart', function () {
+
+            var A = $(this).attr("id");
+            var B = A.split("like");
+            var messageID = B[1];
+            var C = parseInt($("#likeCount" + messageID).html());
+            $(this).css("background-position", "")
+            var D = $(this).attr("rel");
+
+            if (D === 'like') {
+                $("#likeCount" + messageID).html(C + 1);
+                $(this).addClass("heartAnimation").attr("rel", "unlike");
+
+            }
+            else {
+                $("#likeCount" + messageID).html(C - 1);
+                $(this).removeClass("heartAnimation").attr("rel", "like");
+                $(this).css("background-position", "left");
+            }
+
+
+        });
+
+
+    });
+</script>
