@@ -606,7 +606,9 @@
                     </div><!--存放专家回答静态页面的地方-->
                     <div id="theLinks"><!--存放专家给的衣服的链接=====================================================================================================================如果没有回答，则此div为空，若有回答，则此div里面的内容会随着专家提供链接的多少而创建链接-->
                     <div style="font-weight:bold;color:gray;margin-right:5px;">服饰购买链接：</div>
-                        <div id="answerClothHtml"></div>@*这里是购买衣服的链接，id为answerClothHtml，数据用js从数据库获取购买链接再渲染*@
+                        <div id="answerClothHtml" ></div>
+                    <input type="button"  value="采纳此方案"  class="btn btn-primary"  onclick="confirm('如果您对此专家推荐的搭配套装满意的话，请点击确定，点击确定后，您支付的费用将给此专家！');"/>
+    @*这里是购买衣服的链接，id为answerClothHtml，数据用js从数据库获取购买链接再渲染*@
 </div><!--<div id="theLinks">end-->
 
                 </div><!--<div id="theAnswerDiv">end-->

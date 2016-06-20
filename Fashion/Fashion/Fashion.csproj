@@ -389,7 +389,6 @@
     <Content Include="Images\ShangCheng\1.jpg" />
     <Content Include="Images\ShangCheng\10.jpg" />
     <Content Include="Images\ShangCheng\11.jpg" />
-    <Content Include="Images\ShangCheng\12.jpg" />
     <Content Include="Images\ShangCheng\2.jpg" />
     <Content Include="Images\ShangCheng\3.jpg" />
     <Content Include="Images\ShangCheng\4.jpg" />
@@ -675,10 +674,12 @@
     <Content Include="Images\people-right.png" />
     <Content Include="Images\people-wrong.png" />
     <Content Include="Videos\1.mp4" />
+    <Content Include="Videos\10.mp4" />
     <Content Include="Videos\2.mp4" />
     <Content Include="Videos\3.mp4" />
     <Content Include="Videos\4.mp4" />
     <Content Include="Videos\5.mp4" />
+    <Content Include="Videos\6.mp4" />
     <Content Include="Videos\8.mp4" />
     <Content Include="Views\Test\ZeroClipboard.swf" />
     <Content Include="WebForm1.aspx" />
@@ -817,7 +818,6 @@
     <Content Include="Views\PersonShow\VideoPlay10.cshtml" />
     <Content Include="Views\PersonShow\PicturePlay.cshtml" />
     <Content Include="Views\Topic\HomeTWO.cshtml" />
-    <Content Include="Videos\6.mkv" />
     <Content Include="Views\ShangCheng\Index26.cshtml" />
     <Content Include="Views\ShangCheng\Index27.cshtml" />
     <Content Include="Views\ShangCheng\Index28.cshtml" />

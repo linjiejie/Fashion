@@ -81,9 +81,9 @@
 <div id="Right_div" class="Right_div">
     @RenderPage("~/Views/Shared/PeopleNavigationPartial.cshtml")@*这里是局部页面,导航条：我的主页 特定咨询 提问  回答 收藏 消息*@
     <div id="theQuetion" class="theQuetion">        
-        @foreach (var specialConsult_model in Model)
+                        @foreach (var specialConsult_model in Model)
         {
-            <div class="myQuetions" onclick="window.location.href = '../Consult/ConsultDetails?specialConsultId=@specialConsult_model.id&expertUserName=@ViewData["userName"]'">
+            <div class="myQuetions" onclick="window.location.href = '../Consult/ExpertAnswer?specialConsultId=@specialConsult_model.id&expertUserName=@ViewData["userName"]'">
                 <div class="theQuetionword">
                     <div class="theQuetionHead">
                         <span>@specialConsult_model.caption</span><span><img src="~/Images/People-myAsks_huangguan.png" /></span>

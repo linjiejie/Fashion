@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>J:\时尚达人系统\发布Fashion</_PublishTargetUrl>
+    <_PublishTargetUrl>J:\时尚达人系统\发布Fashion\Fashion</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -16,7 +16,7 @@
       <publishTime>04/12/2016 22:18:12</publishTime>
     </File>
     <File Include="bin/Fashion.dll">
-      <publishTime>06/11/2016 21:41:13</publishTime>
+      <publishTime>06/17/2016 16:17:17</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/12/2016 22:18:12</publishTime>
@@ -124,7 +124,7 @@
       <publishTime>04/16/2016 17:41:13</publishTime>
     </File>
     <File Include="Content/footer.css">
-      <publishTime>06/11/2016 20:03:55</publishTime>
+      <publishTime>06/11/2016 22:10:17</publishTime>
     </File>
     <File Include="Content/header.css">
       <publishTime>06/11/2016 17:40:35</publishTime>
@@ -610,7 +610,7 @@
       <publishTime>06/11/2016 13:35:14</publishTime>
     </File>
     <File Include="Images/PersonShowImg/VideoShowIndexImg/1.jpg">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/14/2016 12:05:36</publishTime>
     </File>
     <File Include="Images/PersonShowImg/VideoShowIndexImg/2.jpg">
       <publishTime>06/11/2016 13:35:14</publishTime>
@@ -1573,13 +1573,16 @@
       <publishTime>04/12/2016 22:18:12</publishTime>
     </File>
     <File Include="Videos/1.mp4">
-      <publishTime>06/11/2016 15:25:47</publishTime>
+      <publishTime>06/17/2016 15:47:41</publishTime>
+    </File>
+    <File Include="Videos/10.mp4">
+      <publishTime>06/15/2016 12:02:09</publishTime>
     </File>
     <File Include="Videos/2.mp4">
       <publishTime>06/11/2016 15:25:47</publishTime>
     </File>
     <File Include="Videos/3.mp4">
-      <publishTime>06/11/2016 15:25:47</publishTime>
+      <publishTime>06/17/2016 15:11:48</publishTime>
     </File>
     <File Include="Videos/4.mp4">
       <publishTime>06/11/2016 15:25:47</publishTime>
@@ -1590,6 +1593,9 @@
     <File Include="Videos/6.mkv">
       <publishTime>06/11/2016 15:25:47</publishTime>
     </File>
+    <File Include="Videos/6.mp4">
+      <publishTime>06/17/2016 15:47:41</publishTime>
+    </File>
     <File Include="Videos/7.mkv">
       <publishTime>06/10/2016 21:45:41</publishTime>
     </File>
@@ -1597,7 +1603,7 @@
       <publishTime>06/11/2016 15:25:47</publishTime>
     </File>
     <File Include="Views/Consult/ConsultDetails.cshtml">
-      <publishTime>06/09/2016 20:44:44</publishTime>
+      <publishTime>06/14/2016 00:06:34</publishTime>
     </File>
     <File Include="Views/Consult/ExpertAnswer.cshtml">
       <publishTime>06/11/2016 17:51:38</publishTime>
@@ -1609,7 +1615,7 @@
       <publishTime>04/20/2016 21:13:41</publishTime>
     </File>
     <File Include="Views/People/Change_Data.cshtml">
-      <publishTime>06/09/2016 23:08:08</publishTime>
+      <publishTime>06/12/2016 15:28:34</publishTime>
     </File>
     <File Include="Views/People/ExpertAnswer.cshtml">
       <publishTime>06/09/2016 20:14:11</publishTime>
@@ -1621,7 +1627,7 @@
       <publishTime>06/09/2016 22:59:58</publishTime>
     </File>
     <File Include="Views/People/Login.cshtml">
-      <publishTime>05/01/2016 11:15:37</publishTime>
+      <publishTime>06/19/2016 08:11:36</publishTime>
     </File>
     <File Include="Views/People/myAnsweres.cshtml">
       <publishTime>06/09/2016 20:14:11</publishTime>
@@ -1633,7 +1639,7 @@
       <publishTime>06/09/2016 20:14:11</publishTime>
     </File>
     <File Include="Views/People/MySpecialAnswer.cshtml">
-      <publishTime>06/09/2016 20:14:11</publishTime>
+      <publishTime>06/13/2016 23:44:25</publishTime>
     </File>
     <File Include="Views/People/MySpecialConsult.cshtml">
       <publishTime>06/09/2016 20:14:11</publishTime>
@@ -1648,22 +1654,22 @@
       <publishTime>04/12/2016 22:18:12</publishTime>
     </File>
     <File Include="Views/PersonShow/PersonShowIndex.cshtml">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/11/2016 22:31:29</publishTime>
     </File>
     <File Include="Views/PersonShow/PicturePlay.cshtml">
       <publishTime>06/11/2016 13:35:14</publishTime>
     </File>
     <File Include="Views/PersonShow/PictureShowIndex.cshtml">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/11/2016 22:31:57</publishTime>
     </File>
     <File Include="Views/PersonShow/VideoPlay.cshtml">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/17/2016 14:40:24</publishTime>
     </File>
     <File Include="Views/PersonShow/VideoPlay10.cshtml">
       <publishTime>06/11/2016 13:35:14</publishTime>
     </File>
     <File Include="Views/PersonShow/VideoPlay2.cshtml">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/17/2016 10:49:43</publishTime>
     </File>
     <File Include="Views/PersonShow/VideoPlay3.cshtml">
       <publishTime>06/11/2016 13:35:14</publishTime>
@@ -1687,13 +1693,13 @@
       <publishTime>06/10/2016 22:11:14</publishTime>
     </File>
     <File Include="Views/PersonShow/VideoShowIndex.cshtml">
-      <publishTime>06/11/2016 13:35:14</publishTime>
+      <publishTime>06/17/2016 16:05:42</publishTime>
     </File>
     <File Include="Views/ShangCheng/ClothDetails.cshtml">
       <publishTime>06/07/2016 17:03:16</publishTime>
     </File>
     <File Include="Views/ShangCheng/Index.cshtml">
-      <publishTime>06/11/2016 21:11:45</publishTime>
+      <publishTime>06/13/2016 23:40:19</publishTime>
     </File>
     <File Include="Views/ShangCheng/Index1.cshtml">
       <publishTime>06/11/2016 19:30:11</publishTime>
@@ -1807,10 +1813,10 @@
       <publishTime>04/12/2016 22:18:12</publishTime>
     </File>
     <File Include="Views/Shared/Footer.cshtml">
-      <publishTime>06/11/2016 20:04:43</publishTime>
+      <publishTime>06/11/2016 22:11:57</publishTime>
     </File>
     <File Include="Views/Shared/Header.cshtml">
-      <publishTime>06/11/2016 20:06:11</publishTime>
+      <publishTime>06/13/2016 23:46:24</publishTime>
     </File>
     <File Include="Views/Shared/PeopleModulePartial.cshtml">
       <publishTime>06/11/2016 20:09:14</publishTime>
@@ -1834,7 +1840,7 @@
       <publishTime>06/04/2016 17:11:01</publishTime>
     </File>
     <File Include="Views/StreetSnap/streetHome.cshtml">
-      <publishTime>06/09/2016 20:14:11</publishTime>
+      <publishTime>06/11/2016 22:31:07</publishTime>
     </File>
     <File Include="Views/Template/MyPostTemplate.cshtml">
       <publishTime>05/02/2016 16:00:17</publishTime>
@@ -1861,7 +1867,7 @@
       <publishTime>06/11/2016 17:53:35</publishTime>
     </File>
     <File Include="Views/Topic/Consult.cshtml">
-      <publishTime>06/09/2016 22:15:27</publishTime>
+      <publishTime>06/14/2016 00:04:09</publishTime>
     </File>
     <File Include="Views/Topic/ExpertReply.cshtml">
       <publishTime>06/09/2016 20:14:11</publishTime>
@@ -1870,22 +1876,22 @@
       <publishTime>06/11/2016 17:53:54</publishTime>
     </File>
     <File Include="Views/Topic/Home.cshtml">
-      <publishTime>06/11/2016 17:40:35</publishTime>
+      <publishTime>06/13/2016 23:37:55</publishTime>
     </File>
     <File Include="Views/Topic/HomeTWO.cshtml">
-      <publishTime>06/11/2016 20:04:06</publishTime>
+      <publishTime>06/19/2016 08:17:53</publishTime>
     </File>
     <File Include="Views/Topic/Index.cshtml">
       <publishTime>06/11/2016 17:54:22</publishTime>
     </File>
     <File Include="Views/Topic/LoginRemind.cshtml">
-      <publishTime>06/09/2016 20:14:11</publishTime>
+      <publishTime>06/11/2016 22:02:43</publishTime>
     </File>
     <File Include="Views/Topic/Post.cshtml">
-      <publishTime>06/11/2016 17:40:35</publishTime>
+      <publishTime>06/11/2016 22:17:26</publishTime>
     </File>
     <File Include="Views/Topic/PostDetails.cshtml">
-      <publishTime>06/11/2016 17:40:35</publishTime>
+      <publishTime>06/11/2016 22:14:53</publishTime>
     </File>
     <File Include="Views/Topic/Test.cshtml">
       <publishTime>04/14/2016 01:28:52</publishTime>
@@ -1900,7 +1906,7 @@
       <publishTime>04/12/2016 22:18:12</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/11/2016 17:55:18</publishTime>
+      <publishTime>06/17/2016 16:15:29</publishTime>
     </File>
     <File Include="WebForm1.aspx">
       <publishTime>04/12/2016 22:18:12</publishTime>

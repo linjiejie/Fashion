@@ -818,7 +818,7 @@
             document.getElementById(yx_id).style.display = "block";
             document.getElementById(x).onmouseout = "";
             document.getElementById(x).onclick = function () { Chose_daren_clicked(this.id); };
-            document.getElementById("yixuan_daren").innerHTML = document.getElementById(name_id).innerHTML;
+            //document.getElementById("yixuan_daren").innerHTML = document.getElementById(name_id).innerHTML;
             xz_daren_shu++;
 
         }
@@ -1077,7 +1077,8 @@
                     <td>
                         <div id="Sel_Occasion" style="text-align:left;">
                             <p>点击选择</p>
-                            <ul>
+                            <ul style="overflow: auto;height:auto;">
+                                <li>生日Party</li>
                                 <li>年会</li>
                                 <li>春游</li>
                                 <li>参加婚礼</li>
@@ -1140,7 +1141,7 @@
 
     <div id="confirm_daren" class="confirm_daren">
         <div style="width:100%;color:#f75e24;margin-top:35px;margin-bottom:40px;">
-            您选择了&nbsp;<font id="yixuan_daren"></font>&nbsp;为你搭配,需支付2个达人币！
+            本次咨询需支付2个达人币！
         </div>
 
         <div style="width:100%;">
